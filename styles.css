@@ -11,13 +11,15 @@ h2 {
 }
 h3 {
     font-family: sans-serif;
+    align-self: stretch;
+    justify-self: center;
 }
 .container {
     height: 620px;
     width: 500px;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows:10% 30% 60%;
+    grid-template-rows:10% 35% 55%;
     justify-items: center;
     align-items: stretch;
     background-color: dimgray;
@@ -37,16 +39,88 @@ h3 {
     align-items: stretch;
     justify-self: stretch;
     justify-items: center;
+    padding-top: 50px;
 }
 .playPause {
-    justify-self: center;
-    align-self: center;
+    justify-self: stretch;
+    align-self: stretch;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100%;
+    align-items: stretch;
+    justify-items: center;
 }
 .timer {
     justify-self: center;
-    align-self: center;    
+    align-self: stretch;  
+    display: grid;
+    justify-items: stretch;
+    align-items: stretch;
+    grid-template-columns: 100%;
+    grid-template-rows: 35% 65%;  
 }
 .stopRestart {
+    justify-self: center;
+    align-self: center;
+}
+#play {
+    justify-self: center;
+    align-self: stretch;
+}
+#pause {
+    justify-self: center;
+    align-self: stretch;
+}
+.stopRestart {
+    justify-self: stretch;
+    align-self: stretch;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100%;
+    align-items: stretch;
+    justify-items: center;
+}
+#stop {
+    justify-self: center;
+    align-self: stretch;
+}
+#restart {
+    justify-self: center;
+    align-self: stretch;
+}
+button {
+    width: 40%;
+    margin-bottom: 5px;
+}
+.session {
+    display: grid;
+    justify-self: stretch;
+    align-self: stretch;
+    justify-items: center;
+    grid-template-rows: 45% 55%;
+}
+.break {
+    display: grid;
+    justify-self: stretch;
+    align-self: stretch;
+    justify-items: center;  
+    grid-template-rows: 45% 55%; 
+}
+.upDown {
+    justify-self: stretch;
+    align-self: stretch;
+    display: grid;
+    grid-template-columns: 40% 20% 40%;
+    grid-template-rows: 100%;
+    align-items: stretch;
+    justify-items: center;
+}
+#breakTime {
+    justify-self: center;
+    align-self: center;
+    justify-items: center;
+}
+#sessionTime {
     justify-self: center;
     align-self: center;
 }
