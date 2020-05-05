@@ -1,0 +1,52 @@
+body {
+    background-color: darkturquoise;
+    display: flex;
+    justify-content: center;
+}
+h1 {
+    font-family: sans-serif;
+}
+h2 {
+    font-family: sans-serif;
+}
+h3 {
+    font-family: sans-serif;
+}
+.container {
+    height: 620px;
+    width: 500px;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows:10% 30% 60%;
+    justify-items: center;
+    align-items: stretch;
+    background-color: dimgray;
+}
+#setTimes {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 50% 50%;
+    justify-items: center;
+    align-items: stretch;
+    justify-self: stretch;
+}
+.clock {
+    display: grid;
+    grid-template-rows: 20% 60% 20%;
+    grid-template-columns: 100%;
+    align-items: stretch;
+    justify-self: stretch;
+    justify-items: center;
+}
+.playPause {
+    justify-self: center;
+    align-self: center;
+}
+.timer {
+    justify-self: center;
+    align-self: center;    
+}
+.stopRestart {
+    justify-self: center;
+    align-self: center;
+}
