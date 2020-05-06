@@ -8,6 +8,7 @@ h1 {
 }
 h2 {
     font-family: sans-serif;
+    text-align: center;
 }
 h3 {
     font-family: sans-serif;
@@ -51,7 +52,7 @@ h3 {
     justify-items: center;
 }
 .timer {
-    justify-self: center;
+    justify-self: stretch;
     align-self: stretch;  
     display: grid;
     justify-items: stretch;
@@ -114,6 +115,8 @@ button {
     grid-template-rows: 100%;
     align-items: stretch;
     justify-items: center;
+    font-size: xx-large;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 #breakTime {
     justify-self: center;
@@ -123,4 +126,11 @@ button {
 #sessionTime {
     justify-self: center;
     align-self: center;
+}
+#cycle {
+    justify-self: stretch;
+    align-self: center;
+    text-align: center;
+    font-size: xx-large;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
