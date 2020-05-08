@@ -10,12 +10,48 @@ let pause = document.querySelector("#pause");
 let stop = document.querySelector("#stop");
 let restart = document.querySelector("#restart");
 let sessionBreak = document.querySelector("h2");
+let session = 25;
+let rest = 5;
+let selectedSession = 25;
+let selectedRest = 5;
+let seconds = "0";
+let active = false;
 play.addEventListener("click", (e) => {
+    if (active) {
+        return;
+    }
     startCountdown();
+});
+restart.addEventListener("click", (e) => {
+    clearInterval(active);
+    active = false;
+    session = 25;
+    rest = 5;
+    selectedRest = 5;
+    selectedSession = 25;
+    seconds = "0";
+    updateBreakTime();
+    updateSessionTime();
+    updateClock();
+});
+pause.addEventListener("click", (e) => {
+    clearInterval(active);
+    active = false;
+});
+stop.addEventListener("click", (e)=> {
+    clearInterval(active);
+    active = false;
+    session = selectedSession;
+    rest = selectedRest;
+    seconds = "0";
+    updateBreakTime();
+    updateSessionTime();
+    updateClock();
 });
 increaseSession.addEventListener("click", (e) => {
     if (session < 60) {
         session += 1;
+        selectedSession = session;
     }
     updateSessionTime();
     updateClock();
@@ -23,6 +59,7 @@ increaseSession.addEventListener("click", (e) => {
 decreaseSession.addEventListener("click", (e) => {
     if (session > 5) {
         session -= 1;
+        selectedSession = session;
     }
     updateSessionTime();
     updateClock();
@@ -30,21 +67,21 @@ decreaseSession.addEventListener("click", (e) => {
 increaseBreak.addEventListener("click", (e) => {
     if (rest < 30) {
         rest += 1;
+        selectedRest = rest;
     }
     updateBreakTime();
 });
 decreaseBreak.addEventListener("click", (e) => {
     if (rest > 1) {
         rest -= 1;
+        selectedRest = rest;
     }
     updateBreakTime();
 });
 console.log(breakTime, sessionTime, cycle);
-let session = 25;
-let rest = 5;
-let seconds = "0";
 function startCountdown() {
-    setInterval(function(){ 
+    //active = true;
+    active = setInterval(function(){ 
         if (session == 0 && seconds == 0) {
             startBreak();
             return;
@@ -66,6 +103,7 @@ function startCountdown() {
         console.log(session +":" + seconds);
         }
         }, 10);
+        
 }
 function updateBreakTime() {
     breakTime.textContent = rest + " min";
