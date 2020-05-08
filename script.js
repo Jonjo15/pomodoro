@@ -16,11 +16,17 @@ let selectedSession = 25;
 let selectedRest = 5;
 let seconds = "0";
 let active = false;
+let sessionOver = false;
 play.addEventListener("click", (e) => {
     if (active) {
         return;
     }
-    startCountdown();
+    if (sessionOver) {
+        breakCountdown();
+    }
+    else {
+        startCountdown();
+    }
 });
 restart.addEventListener("click", (e) => {
     clearInterval(active);
@@ -83,6 +89,9 @@ function startCountdown() {
     //active = true;
     active = setInterval(function(){ 
         if (session == 0 && seconds == 0) {
+            clearInterval(active);
+            active = false;
+            sessionOver = true;
             startBreak();
             return;
         }
@@ -105,6 +114,38 @@ function startCountdown() {
         }, 10);
         
 }
+function breakCountdown() {
+    active = setInterval(function(){ 
+        if (rest == 0 && seconds == 0) {
+                clearInterval(active);
+                active = false;
+                sessionOver = false;
+                session = selectedSession;
+                rest = selectedRest;
+                seconds = "0";
+                updateBreakTime();
+                updateSessionTime();
+                updateClock();
+            return;
+        }
+        if (seconds === "00" || seconds == 0) {
+            seconds = "59";
+            rest -= 1;
+        }
+        else {
+             seconds -= 1
+        } 
+        if (seconds < 10) {
+            seconds = "0" + seconds;
+            cycle.textContent = rest +":" + seconds;
+            console.log(rest +":" + seconds);
+        }
+        else {
+        cycle.textContent = rest +":" + seconds;
+        console.log(rest +":" + seconds);
+        }
+        }, 1000);
+}
 function updateBreakTime() {
     breakTime.textContent = rest + " min";
 }
@@ -117,6 +158,7 @@ function updateClock() {
     if (seconds < 10 && seconds.length < 2) {
         seconds = "0" + seconds;
     }
+    sessionBreak.textContent = "Session";
     cycle.textContent = session + ":" + seconds;
 }
 function startBreak() {
