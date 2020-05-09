@@ -52,9 +52,17 @@ stop.addEventListener("click", (e)=> {
     seconds = "0";
     updateBreakTime();
     updateSessionTime();
-    updateClock();
+    if (sessionOver) {
+        startBreak();
+    }
+    else {
+        updateClock();
+    }
 });
 increaseSession.addEventListener("click", (e) => {
+    if (active) {
+        return;
+    }
     if (session < 60) {
         session += 1;
         selectedSession = session;
@@ -63,6 +71,9 @@ increaseSession.addEventListener("click", (e) => {
     updateClock();
 });
 decreaseSession.addEventListener("click", (e) => {
+    if (active) {
+        return;
+    }
     if (session > 5) {
         session -= 1;
         selectedSession = session;
@@ -71,6 +82,9 @@ decreaseSession.addEventListener("click", (e) => {
     updateClock();
 });
 increaseBreak.addEventListener("click", (e) => {
+    if (active) {
+        return;
+    }
     if (rest < 30) {
         rest += 1;
         selectedRest = rest;
@@ -78,6 +92,9 @@ increaseBreak.addEventListener("click", (e) => {
     updateBreakTime();
 });
 decreaseBreak.addEventListener("click", (e) => {
+    if (active) {
+        return;
+    }
     if (rest > 1) {
         rest -= 1;
         selectedRest = rest;
@@ -111,7 +128,7 @@ function startCountdown() {
         cycle.textContent = session +":" + seconds;
         console.log(session +":" + seconds);
         }
-        }, 10);
+        }, 1000);
         
 }
 function breakCountdown() {
@@ -162,6 +179,9 @@ function updateClock() {
     cycle.textContent = session + ":" + seconds;
 }
 function startBreak() {
+    if (seconds < 10 && seconds.length < 2) {
+        seconds = "0" + seconds;
+    }
     sessionBreak.textContent = "Break";
     cycle.textContent = rest + ":" + seconds;
 }
