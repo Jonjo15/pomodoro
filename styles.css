@@ -23,7 +23,7 @@ h3 {
     grid-template-rows:10% 35% 55%;
     justify-items: center;
     align-items: stretch;
-    background-color: whitesmoke;
+    background-color: rgba(245, 245, 245, 0.774);
 }
 #setTimes {
     display: grid;
